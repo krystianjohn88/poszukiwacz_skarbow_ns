@@ -15,12 +15,13 @@ let sameLvlTreuser = 0;
 let arrLvlOfRouteToIndex = [];
 let arrDangonLvlTresuer = [];
 let indexOfTresures = '';
-const imgTreuser = document.querySelector("#Treuser");
+const imgTreuser = document.querySelector("#treuser");
 let gTrigger = 0;
 let sTrigger = 0;
 const elementMap = document.querySelector("#gMap");
 const elementBtnMap = document.querySelector("#map");
 const dateInfo = document.querySelector("#treasureDate");
+const divLvlTreuser = document.querySelector("#lvlTreuser");
 
 //tworze obiekt(tablice) z ciagiem znaków reprezentujący świat---------------------
 
@@ -147,11 +148,14 @@ $(document).ready(function () {
                         iBtn--;
                         document.querySelectorAll("#gMap>p")[iBtn].style.color = 'red';
                         document.querySelectorAll("#gMap>p")[iBtn].style.fontSize = '40px';
+                        imgTreuser.innerHTML='';
                         if (document.querySelectorAll("#gMap>p")[iBtn].innerText == '(') {
                             imgTreuser.innerHTML = '<img src="schodygora.jpg">';
                         }else if(document.querySelectorAll("#gMap>p")[iBtn].innerText == ')') {
                             imgTreuser.innerHTML = '<img src="schodydol.jpg">';
                         }
+                        divLvlTreuser.innerHTML=`Poziom: ${arrLvlOfRouteToIndex[iBtn][1]}`;
+                        
 
                     }
                     if (iBtn == indexOfTresures) {
@@ -169,12 +173,14 @@ $(document).ready(function () {
                         iBtn++;
                         document.querySelectorAll("#gMap>p")[iBtn].style.color = 'red';
                         document.querySelectorAll("#gMap>p")[iBtn].style.fontSize = '40px';
+                        imgTreuser.innerHTML='';
                         if (document.querySelectorAll("#gMap>p")[iBtn].innerText == '(') {
                             imgTreuser.innerHTML = '<img src="schodygora.jpg">';
                         }else if(document.querySelectorAll("#gMap>p")[iBtn].innerText == ')') {
                             imgTreuser.innerHTML = '<img src="schodydol.jpg">';
                         }
                     }
+                    divLvlTreuser.innerHTML=`Poziom: ${arrLvlOfRouteToIndex[iBtn][1]}`;
                     if (iBtn == indexOfTresures) {
 
                         imgTreuser.innerHTML = '<img src="skarb.png">';
