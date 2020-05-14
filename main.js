@@ -1,26 +1,30 @@
 // Autor Krystian John //
 //Zmiene
 let numberOfString = 24;
-let dangonLvl = '0';
+let dangonLvl = 0;
 const plus = '(';
 const minus = ')';
 const tresures = '*';
 const queryRoute = [plus, minus, tresures];
 const lengthRandomString = queryRoute.length;
 let selectedTypeOfRoute = '';
-const queryTresuresFound = [];
-const queryTreuserToDangonLvl = [];
+let stringWord = [];
+let queryTresuresFound = [];
+let queryTreuserToDangonLvl = [];
 let sameLvlTreuser = 0;
-const arrLvlOfRouteToIndex = [];
-const arrDangonLvlTresuer = [];
+let arrLvlOfRouteToIndex = [];
+let arrDangonLvlTresuer = [];
 let indexOfTresures = '';
 const imgTreuser = document.querySelector("#Treuser");
-let gTriggle = 0;
-let sTriggle = 0;
+let gTrigger = 0;
+let sTrigger = 0;
+const elementMap = document.querySelector("#gMap");
+const elementBtnMap = document.querySelector("#map");
+const dateInfo = document.querySelector("#treasureDate");
 
 //tworze obiekt(tablice) z ciagiem znaków reprezentujący świat---------------------
 
-let stringWord = [];
+
 const lenghtStringWord = stringWord.length;
 //Funkcje
 //Losowanie znaków do mapy------------------------------------------------
@@ -86,7 +90,7 @@ function foundTreasure() {
 
         }
         indexOfTresures = maxIndex;
-        document.querySelector("#treasureDate").innerText = `Index pierwszego skarbu, których jest najwięcej na jednym poziomie to: ${maxIndex} i jest on na poziomie: ${arrLvlOfRouteToIndex[maxIndex][1]}. `;
+        dateInfo.innerText = `Index pierwszego skarbu, których jest najwięcej na jednym poziomie to: ${maxIndex} i jest on na poziomie: ${arrLvlOfRouteToIndex[maxIndex][1]}. `;
     }
     maxInArray()
 
@@ -96,15 +100,15 @@ $(document).ready(function () {
     //przycisk do generowania kodu--------------------------------------
     $("#btnGenerator").click(function (e) {
         e.preventDefault();
-        if (gTriggle == 0) {
-            gTriggle++
-            document.querySelector("#gMap").innerText = '';
+        if (gTrigger == 0) {
+            gTrigger++
+            elementMap.innerText = '';
             randomStringWord();
             let indexStringInDiv = 1;
             stringWord.forEach((string) => {
                 let el = document.createElement('p');
 
-                document.querySelector("#gMap").appendChild(el);
+                elementMap.appendChild(el);
                 document.querySelector(`#gMap > p:nth-child(${indexStringInDiv})`).append(string);
                 indexStringInDiv++
             });
@@ -113,21 +117,21 @@ $(document).ready(function () {
     });
     //przycisk do przeszukiwania--------------------------------------------
     $("#btnSearch").click(function (e) {
-        
-        if (sTriggle == 0 && gTriggle>0) {
-            sTriggle++;
+
+        if (sTrigger == 0 && gTrigger > 0) {
+            sTrigger++;
             e.preventDefault();
             const btnLeft = document.createElement('button');
             btnLeft.classList.add('btnLeft');
             btnLeft.textContent = '<=== rusz w lewo |';
-            document.querySelector("#map").appendChild(btnLeft);
+            elementBtnMap.appendChild(btnLeft);
             const btnRight = document.createElement('button');
             btnRight.classList.add('btnRight');
             btnRight.textContent = '| rusz w prawo ===>';
-            document.querySelector("#map").appendChild(btnRight);
-            
+            elementBtnMap.appendChild(btnRight);
+
             foundTreasure();
-            
+
             let iBtn = Math.floor(Math.random() * numberOfString);
             document.querySelectorAll("#gMap>p")[iBtn].style.color = 'red';
             document.querySelectorAll("#gMap>p")[iBtn].style.fontSize = '40px';
@@ -146,7 +150,7 @@ $(document).ready(function () {
                         imgTreuser.innerHTML = '';
                     }
                     if (iBtn == indexOfTresures) {
-                        
+
                         imgTreuser.innerHTML = '<img src="skarb.png">';
                     }
 
@@ -162,17 +166,35 @@ $(document).ready(function () {
                         imgTreuser.innerHTML = '';
                     }
                     if (iBtn == indexOfTresures) {
-                        
+
                         imgTreuser.innerHTML = '<img src="skarb.png">';
 
                     }
 
                 })
-                
+
 
             }
             bohater();
         }
     });
+    //    przycisk resetu-------------------------------------
+    $('#btnReset').click(function (e) {
+        e.preventDefault();
+        sTrigger = 0;
+        gTrigger = 0;
+        dangonLvl=0;
+        elementMap.innerHTML = "";
+        document.querySelector("#map").childNodes[3].remove();
+        document.querySelector("#map").childNodes[3].remove();
+        stringWord = [];
+        queryTresuresFound = [];
+        queryTreuserToDangonLvl = [];
+        sameLvlTreuser = 0;
+        arrLvlOfRouteToIndex = [];
+        arrDangonLvlTresuer = [];
+        indexOfTresures = '';
+        dateInfo.innerText='';
+    })
 
 });

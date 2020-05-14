@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Poszukiwacz Skarbów</title>
@@ -7,15 +8,24 @@
     <meta name=”description” content=”Najlepsza gra przygodowa, sprawdz czy znajdziesz skarb”>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-<div id="title" class="text-center"><h1>Poszukiwacz Skarbów</h1></div>
- <div id='btnGenerator' class="btnStyle"><button type="button" class="btn btn-primary">Generuj mapę świata</button></div>
-     <div id='btnSearch' class="btnStyle"><button type="button" class="btn btn-success">Szukaj skarbu</button></div>
-  <div id="map">Mapa świata: <div id="gMap"></div></div>
-   <div id="date"><p id="treasureDate"></p></div>
-   <div id="Treuser"></div>
+    <div id="title" class="text-center">
+        <h1>Poszukiwacz Skarbów</h1>
+    </div>
+    <div id='btnGenerator' class="btnStyle"><button type="button" class="btn btn-primary">Generuj mapę świata</button></div>
+    <div id='btnSearch' class="btnStyle"><button type="button" class="btn btn-success">Szukaj skarbu</button></div>
+    <div id='btnReset' class="btnStyle"><button type="button" class="btn btn-danger">Reset</button></div>
+    <div id="map">Mapa świata:
+        <div id="gMap"></div>
+    </div>
+    <div id="date">
+        <p id="treasureDate"></p>
+    </div>
+    <div id="Treuser"></div>
     <script src="main.js"></script>
 </body>
+
 </html>
