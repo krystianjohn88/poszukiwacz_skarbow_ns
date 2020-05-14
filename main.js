@@ -147,11 +147,17 @@ $(document).ready(function () {
                         iBtn--;
                         document.querySelectorAll("#gMap>p")[iBtn].style.color = 'red';
                         document.querySelectorAll("#gMap>p")[iBtn].style.fontSize = '40px';
-                        imgTreuser.innerHTML = '';
+                        if (document.querySelectorAll("#gMap>p")[iBtn].innerText == '(') {
+                            imgTreuser.innerHTML = '<img src="schodygora.jpg">';
+                        }else if(document.querySelectorAll("#gMap>p")[iBtn].innerText == ')') {
+                            imgTreuser.innerHTML = '<img src="schodydol.jpg">';
+                        }
+
                     }
                     if (iBtn == indexOfTresures) {
 
                         imgTreuser.innerHTML = '<img src="skarb.png">';
+
                     }
 
                 })
@@ -163,7 +169,11 @@ $(document).ready(function () {
                         iBtn++;
                         document.querySelectorAll("#gMap>p")[iBtn].style.color = 'red';
                         document.querySelectorAll("#gMap>p")[iBtn].style.fontSize = '40px';
-                        imgTreuser.innerHTML = '';
+                        if (document.querySelectorAll("#gMap>p")[iBtn].innerText == '(') {
+                            imgTreuser.innerHTML = '<img src="schodygora.jpg">';
+                        }else if(document.querySelectorAll("#gMap>p")[iBtn].innerText == ')') {
+                            imgTreuser.innerHTML = '<img src="schodydol.jpg">';
+                        }
                     }
                     if (iBtn == indexOfTresures) {
 
@@ -183,7 +193,7 @@ $(document).ready(function () {
         e.preventDefault();
         sTrigger = 0;
         gTrigger = 0;
-        dangonLvl=0;
+        dangonLvl = 0;
         elementMap.innerHTML = "";
         document.querySelector("#map").childNodes[3].remove();
         document.querySelector("#map").childNodes[3].remove();
@@ -194,7 +204,8 @@ $(document).ready(function () {
         arrLvlOfRouteToIndex = [];
         arrDangonLvlTresuer = [];
         indexOfTresures = '';
-        dateInfo.innerText='';
+        dateInfo.innerText = '';
+        imgTreuser.innerHTML = "";
     })
 
 });
